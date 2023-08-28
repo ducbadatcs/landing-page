@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>kattis_triangle</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="bài-toán-độ-dài-sierpiński">Bài toán: Độ dài Sierpiński</h1>
+<h3 id="link-đề-bài-httpsopen.kattis.comproblemstriangle">Link đề bài: https://open.kattis.com/problems/triangle</h3>
+<h2 id="đề-bài-">Đề bài-</h2>
+<p>Để tóm gọn đề bài:</p>
+<blockquote>
+<p>Tam giác Sierpiński là 1 hình được cấu tạo như sau:</p>
+<ol type="1">
+<li><p>Đầu tiên, bắt đầu bằng 1 tam giác</p></li>
+<li><p>Thu nhỏ hình tam giác đó thành 1 tam giác có cạnh đáy và đường cao = 1/2 cạnh đáy và đường cao của tam &gt;giác gốc, sau đó tạo 2 bản sao của tam giác nhỏ đó</p></li>
+<li><p>Ghép 3 tam giác sao cho chúng chạm nhau ở 3 góc. Hình hiện tại sẽ là hình ghép này</p></li>
+<li><p>Lặp lại bước 2</p></li>
+</ol>
+</blockquote>
+<p>Với số lặp của bước 4 càng lớn đến vô cùng, sẽ tạo ra một hình gồm vô cùng nhiều các tam giác đen nhỏ, nhưng chúng ta chỉ xét trường hợp bước 4 lặp lại 1 số lần hữu hạn. Giả sử chúng ta có 1 tam giác lớn có chu vi bằng 3, sau khi lặp lại bước 4 <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N" alt="N" title="N" /> lần, tổng chu vi các tam giác đen nhỏ là bao nhiêu? Lưu ý là số này có thể rất lớn và lẻ, nên hãy in ra <strong>số chữ số của phần nguyên</strong> số đó.</p>
+<h3 id="input-nhiều-dòng-mỗi-dòng-có-1-số-n-0-leq-n-leq-10000">Input: Nhiều dòng, mỗi dòng có 1 số <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N" alt="N" title="N" />, <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%200%20%5Cleq%20N%20%5Cleq%2010000" alt="0 \leq N \leq 10000" title="0 \leq N \leq 10000" /></h3>
+<h3 id="output-số-chữ-số-của-phần-nguyên-của-tổng-chu-vi-các-tam-giác-nhỏ-nếu-lặp-lại-bước-4-n-lần.-đây-là-tóm-gọn-trên-thực-tế-output-gốc-của-đề-bài-cần-in-ra-số-testcase-theo-kiểu-case-1-case-2-...-nên-mình-bỏ-qua.">Output: Số chữ số của phần nguyên của tổng chu vi các tam giác nhỏ nếu lặp lại bước 4 <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N" alt="N" title="N" /> lần. (Đây là tóm gọn, trên thực tế output gốc của đề bài cần in ra số testcase theo kiểu <code>Case 1:, Case 2:, ...</code> nên mình bỏ qua.)</h3>
+<h2 id="bài-giải">Bài giải</h2>
+<p>Đầu tiên, chúng ta sẽ giả sử tam giác lớn ban đầu là 1 tam giác đều, vì đây sẽ là trường hợp đặc biệt dễ tính nhất (và không sợ mất tính tổng quát, tại vì đề bài không cho điều kiện gì thêm ngoài chu vi tam giác bằng <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%203" alt="3" title="3" />. Các cạnh của tam giác này khi đó sẽ bằng <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201" alt="1" title="1" />, và mỗi bước chúng ta sẽ chia được các tam giác nhỏ hơn đều là tam giác đều. Như vậy, chúng ta cần đếm số tam giác đen nhỏ, và độ dài mỗi cạnh của các tam giác đen nhỏ đó. Để thuận tiện, chúng ta gọi hàm tổng chu vi các tam giác con là <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20C%28n%29" alt="C(n)" title="C(n)" />, hàm này sẽ có giá trị là <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%203%20%2A%20s_n%20%2A%20l_n" alt="3 * s_n * l_n" title="3 * s_n * l_n" /> với <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20s_n" alt="s_n" title="s_n" /> là số tam giác con ở bước thứ <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20n" alt="n" title="n" />, VÀ <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20l_n" alt="l_n" title="l_n" /> là độ dài cạnh 1 tam giác con ở bước thứ <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20n" alt="n" title="n" />.</p>
+<p>Để đếm số tam giác đen nhỏ, chúng ta nhận thấy mỗi khi chia 1 tam giác lớn thì chúng ta luôn được 3 tam giác nhỏ, nên có số tam giác bước <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28N%20%2B%201%29" alt="(N + 1)" title="(N + 1)" /> = <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%203" alt="3" title="3" /> * số tam giác bước <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N" alt="N" title="N" /> (vì từ bước <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N" alt="N" title="N" /> sang bước <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%20%2B%201" alt="N + 1" title="N + 1" /> luôn có 3 tam giác con sinh ra từ 1 tam giác), nên số tam giác có dạng cấp số nhân <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20s_n%20%3D%20a%20%2A%203%5En" alt="s_n = a * 3^n" title="s_n = a * 3^n" />, với <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a" alt="a" title="a" /> là số tam giác ở bước ban đầu, bước 0, mà vì bước 0 chỉ có 1 tam giác lớn nên <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a%20%3D%201" alt="a = 1" title="a = 1" />. Từ đó, ta có số tam giác con ở bước <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N" alt="N" title="N" /> là <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%203%5En" alt="3^n" title="3^n" />.</p>
+<p>Tiếp theo, ta cần tính độ dài mỗi cạnh các tam giác nhỏ. Dễ thấy ở mỗi bước, các tam giác nhỏ sinh ra đều có cạnh bằng nửa tam giác ban đầu, nên độ dài cạnh của 1 tam giác con ở bước <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N" alt="N" title="N" /> là <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20l_n%20%3D%20a%20%2A%20%5Cfrac%7B1%7D%7B2%5En%7D" alt="l_n = a * \frac{1}{2^n}" title="l_n = a * \frac{1}{2^n}" />. Vì tam giác ban đầu có cạnh bằng 1, nên <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a%20%3D%201" alt="a = 1" title="a = 1" />. Ta kết luận độ dài 1 cạnh tam giác con là <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20l_n%20%3D%20%5Cfrac%7B1%7D%7B2%20%5E%20n%7D" alt="l_n = \frac{1}{2 ^ n}" title="l_n = \frac{1}{2 ^ n}" /></p>
+<p>vậy có <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%203%5En" alt="3^n" title="3^n" /> tam giác con, hay có <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%203%20%5E%20n%20%2A%203%20%3D%203%5E%7Bn%2B1%7D" alt="3 ^ n * 3 = 3^{n+1}" title="3 ^ n * 3 = 3^{n+1}" /> cạnh (mỗi tam giác con có 3 cạnh), và mỗi cạnh này có độ dài <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7B1%7D%7B2%5En%7D" alt="\frac{1}{2^n}" title="\frac{1}{2^n}" />, nên chu vi của nó là <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20C%28n%29%20%3D%203%5E%7Bn%20%2B%201%7D%20%2A%20%5Cfrac%7B1%7D%7B2%20%5E%20n%7D%20%3D%20%5Cfrac%7B3%5E%7Bn%2B1%7D%7D%7B2%5En%7D" alt="C(n) = 3^{n + 1} * \frac{1}{2 ^ n} = \frac{3^{n+1}}{2^n}" title="C(n) = 3^{n + 1} * \frac{1}{2 ^ n} = \frac{3^{n+1}}{2^n}" />. Vậy là chúng ta đã có công thức để tính <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20C%28n%29" alt="C(n)" title="C(n)" />, nhưng đề bài lại yêu cầu ta tính <strong>số chữ số của phần nguyên</strong> của nó. Vậy ta phải làm như thế nào?</p>
+<h3 id="cách-giải-1-tính-trực-tiếp">Cách giải 1: Tính trực tiếp</h3>
+<p>Cách đơn giản nhất là tính trực tiếp <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20C%28n%29" alt="C(n)" title="C(n)" />, rồi in ra số chữ số của nó. Số chữ số của phần nguyên 1 số thập phân <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x" alt="x" title="x" /> bất kỳ là <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clfloor%20log_%7B10%7D%28x%29%20%5Crfloor%20%2B%201" alt="\lfloor log_{10}(x) \rfloor + 1" title="\lfloor log_{10}(x) \rfloor + 1" /></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">def</span> C(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">3</span> <span class="op">**</span> (n <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span> <span class="op">**</span> n</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">def</span> sochusocuaC(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="cf">return</span> floor(log10(C(n))) <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="dt">long</span> <span class="dt">double</span> C(<span class="dt">int</span> n){</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="cf">return</span> (<span class="dt">long</span> <span class="dt">double</span>)(pow(<span class="dv">3</span>, n + <span class="dv">1</span>)) / pow(<span class="dv">2</span>, n);</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="dt">int</span> sochusocuaC(<span class="dt">int</span> n){</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    <span class="cf">return</span> floor(log10l(C(n))) + <span class="dv">1</span>;</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>}</span></code></pre></div>
+<p>ĐPT: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20O%28N%29" alt="O(N)" title="O(N)" /></p>
+<p>Để tính các phép mũ nhanh hơn, ta có thể sử dụng <a href="https://hackmd.io/@DeMen100ms/DeMenBlog3">Lũy thừa nhanh</a>. Cần lưu ý là ta phải bỏ modulo đi do cần xử lý kết quả lớn.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">def</span> <span class="bu">pow</span>(a: <span class="bu">int</span>, b: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>    t <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>    <span class="cf">while</span> (b <span class="op">&gt;</span> <span class="dv">0</span>):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>        <span class="cf">if</span> (b <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>            t <span class="op">*=</span> a</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>        a <span class="op">=</span> a <span class="op">*</span> a</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>        b <span class="op">//=</span> <span class="dv">2</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="kw">def</span> C(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>    <span class="cf">return</span> <span class="bu">pow</span>(<span class="dv">3</span>, n <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="bu">pow</span>(<span class="dv">2</span>, n)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="kw">def</span> sochusocuaC(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a>    <span class="cf">return</span> floor(log10(C(n))) <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="dt">long</span> <span class="dt">long</span> pow(<span class="dt">long</span> <span class="dt">long</span> a, <span class="dt">long</span> <span class="dt">long</span> b){</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>    <span class="dt">long</span> <span class="dt">long</span> t = <span class="dv">1</span>;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>    <span class="cf">while</span> (b &gt; <span class="dv">0</span>){</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>        <span class="cf">if</span> (b % <span class="dv">2</span> == <span class="dv">1</span>) t *= a;</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>        a = a * a;</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>        b /= <span class="dv">2</span>;</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>    }</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>}</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="dt">long</span> <span class="dt">double</span> C(<span class="dt">int</span> n){</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>    <span class="cf">return</span> (<span class="dt">long</span> <span class="dt">double</span>)(pow(<span class="dv">3</span>, n + <span class="dv">1</span>)) / pow(<span class="dv">2</span>, n);</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>}</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a><span class="dt">int</span> sochusocuaC(<span class="dt">int</span> n){</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a>    <span class="cf">return</span> floor(log10l(C(n))) + <span class="dv">1</span>;</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>}</span></code></pre></div>
+<p>ĐPT: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20O%28log%20%5C%20%7Bn%7D%29" alt="O(log \ {n})" title="O(log \ {n})" /></p>
+<p>Chú ý rằng <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7B3%20%5E%20%7Bn%20%2B%201%7D%7D%7B2%20%5E%20n%7D%20%3D%203%20%2A%20%5Cfrac%7B3%5En%7D%7B2%5En%7D%20%3D%203%20%2A%20%28%5Cfrac%7B3%7D%7B2%7D%29%5En" alt="\frac{3 ^ {n + 1}}{2 ^ n} = 3 * \frac{3^n}{2^n} = 3 * (\frac{3}{2})^n" title="\frac{3 ^ {n + 1}}{2 ^ n} = 3 * \frac{3^n}{2^n} = 3 * (\frac{3}{2})^n" />, nên ta có thể thay đổi hàm <code>pow</code> để giảm số phép nhân và lần gọi hàm này.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">def</span> <span class="bu">pow</span>(a: <span class="bu">float</span>, b: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>    <span class="co">#lưu ý a lúc này là kiểu dữ liệu float</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>    t <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>    <span class="cf">while</span> (b <span class="op">&gt;</span> <span class="dv">0</span>):</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>        <span class="cf">if</span> (b <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>            t <span class="op">*=</span> a</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>        a <span class="op">=</span> a <span class="op">*</span> a</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>        b <span class="op">//=</span> <span class="dv">2</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="kw">def</span> C(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a>    <span class="cf">return</span> <span class="bu">pow</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, n) <span class="op">*</span> <span class="dv">3</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="kw">def</span> sochusocuaC(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a>    <span class="cf">return</span> floor(log10(C(n))) <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="dt">long</span> <span class="dt">double</span> pow(<span class="dt">long</span> <span class="dt">double</span> a, <span class="dt">int</span> b){</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>    <span class="dt">long</span> <span class="dt">double</span> t = <span class="dv">1</span>;</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>    <span class="cf">while</span> (b &gt; <span class="dv">0</span>){</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>        <span class="cf">if</span> (b % <span class="dv">2</span> == <span class="dv">1</span>) t *= a;</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>        a = a * a;</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>        b /= <span class="dv">2</span>;</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>    }</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>}</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a><span class="dt">long</span> <span class="dt">double</span> C(<span class="dt">int</span> n){</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a>    <span class="cf">return</span> (<span class="dt">long</span> <span class="dt">double</span>)pow(<span class="dv">3</span>/<span class="dv">2</span>, n) * <span class="dv">3</span>;</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a>}</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true"></a><span class="dt">int</span> sochusocuaC(<span class="dt">int</span> n){</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true"></a>    <span class="cf">return</span> floor(log10l(C(n))) + <span class="dv">1</span>;</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true"></a>}</span></code></pre></div>
+<p>ĐPT: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20O%28log%20%5C%20n%29" alt="O(log \ n)" title="O(log \ n)" /></p>
+<p>Tuy nhiên, cách này cần tính kết quả lớn, rất dễ bị tràn số với các ngôn ngữ như C, C++, … Vì vậy, ta cần cách khác.</p>
+<h3 id="cách-giải-2-cách-giải-gián-tiếp">Cách giải 2: Cách giải gián tiếp</h3>
+<p>Tuy chúng ta không thể tính được <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20C%28n%29" alt="C(n)" title="C(n)" /> một cách trực tiếp, nhưng chúng ta vẫn có thể tính được <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20log_%7B10%7D%28C%28n%29%29" alt="log_{10}(C(n))" title="log_{10}(C(n))" />. Chú ý rằng <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20log_%7B10%7D%7BC%28n%29%7D%20%3D%20log_%7B10%7D%7B%5Cfrac%7B3%20%5E%20%7Bn%20%2B%201%7D%7D%7B2%20%5E%20n%7D%7D%20%3D%20log_%7B10%7D%7B3%5E%7Bn%20%2B%201%7D%7D%20-%20log_%7B10%7D%7B2%5En%7D%20%3D%20%28n%20%2B%201%29%20%2A%20log_%7B10%7D3%20-%20n%20%2A%20log_%7B10%7D2" alt="log_{10}{C(n)} = log_{10}{\frac{3 ^ {n + 1}}{2 ^ n}} = log_{10}{3^{n + 1}} - log_{10}{2^n} = (n + 1) * log_{10}3 - n * log_{10}2" title="log_{10}{C(n)} = log_{10}{\frac{3 ^ {n + 1}}{2 ^ n}} = log_{10}{3^{n + 1}} - log_{10}{2^n} = (n + 1) * log_{10}3 - n * log_{10}2" /><br /></p>
+<p>Từ đây, ta dễ dàng tính được phần còn lại. Đồng thời, để tránh máy tính lại các hằng số <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20log_%7B10%7D%7B3%7D" alt="log_{10}{3}" title="log_{10}{3}" /> và <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20log_%7B10%7D%7B2%7D" alt="log_{10}{2}" title="log_{10}{2}" /> nhiều lần, ta có thể đặt các hằng số cho các kết quả này.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>lg3 <span class="op">=</span> log10(<span class="dv">3</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>lg2 <span class="op">=</span> log10(<span class="dv">2</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="kw">def</span> sochusocuaC(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>    <span class="kw">global</span> lg3</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>    <span class="kw">global</span> lg2</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>    <span class="cf">return</span> floor((n <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> lg3 <span class="op">-</span> n <span class="op">*</span> lg2) <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="at">const</span> <span class="dt">double</span> lg3 = log10(<span class="dv">3</span>), lg2 = log10(<span class="dv">2</span>);</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="dt">int</span> sochusocuaC(<span class="dt">int</span> n){</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>    <span class="cf">return</span> floor((n + <span class="dv">1</span>) * lg3 - n * lg2) + <span class="dv">1</span>;</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>}</span></code></pre></div>
+<p>ĐPT: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20O%281%29" alt="O(1)" title="O(1)" /></p>
+<p>Đây là bài đăng đầu tiên của mình trên github, nếu có lỗi sai gì các bạn hãy góp ý nhé!</p>
+<p>Tác giả: Hoàng Minh Đức / ducmatgoctoanlyhoa</p>
+</body>
+</html>
