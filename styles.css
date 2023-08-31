@@ -9,7 +9,12 @@
 	color: blue;
 }
 
-
+.blue-box {
+	margin: 2px;
+	padding: 2px;
+	border: 2px solid blue;
+	width: fit-content;
+}
 
 
 img {
