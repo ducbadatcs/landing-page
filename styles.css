@@ -1,6 +1,16 @@
-body {
-	width: 500px; 
+* {
+	
+	/* text-align: center; */
+	font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+body { 
 	margin: auto;
+}
+
+h1 {
+	border: 2px solid black;
+	
 }
 
 .warning {
@@ -11,7 +21,10 @@ body {
 }
 
 .instruction{
-	color: blue;
+	color: black;
+	border: 2px solid brown;
+	background-color: gold;
+		
 }
 
 .blue-box {
@@ -19,11 +32,46 @@ body {
 	padding: 2px;
 	border: 2px solid blue;
 	width: fit-content;
+	color: blue;
 }
 
+.introbox{
+	border: 2px dashed green;
+	background-color: aqua;
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+.introbox .info{
+	margin: 8px;
+	border: 2px solid black;
+	padding: 6px;
+}
 
 img {
 	height: auto;
 	width: auto;
+}
+
+/* this is for the fcc project */
+
+.hero {
+	background-color: #1F2937;
+	color: #F9FAF8;
+	display: flex;
+	gap: 50px;
+	justify-content: flex-start;
+	size: 18px;
+}
+
+.hero a{
+	color: #F9FAF8;
+}
+
+.hero .header-logo {
+	size: 24px;
+	flex-grow: 1;
+	flex-direction: row;
 }
 
