@@ -1,7 +1,7 @@
 * {
 	
 	/* text-align: center; */
-	font-family: Georgia, 'Times New Roman', Times, serif
+	font-family: Roboto, Georgia, 'Times New Roman', Times, serif
 }
 
 body { 
@@ -73,5 +73,16 @@ img {
 	size: 24px;
 	flex-grow: 1;
 	flex-direction: row;
+}
+
+.hero button{
+	background-color: #1F2937;
+	border: 0px;
+}
+
+.hero .box {
+	display: flex;
+	flex: 1 1 auto;
+	padding: 50px;
 }
 
