@@ -8,6 +8,10 @@ body {
 	margin: auto;
 }
 
+.hero a {
+	text-decoration: none;
+}
+
 h1 {
 	border: 2px solid black;
 	
@@ -78,6 +82,7 @@ img {
 .hero button{
 	background-color: #1F2937;
 	border: 0px;
+	padding-right: 50px;
 }
 
 .hero .box {
@@ -86,3 +91,14 @@ img {
 	padding: 50px;
 }
 
+.hero .main-text{
+	font-weight: 900; font-size: 48px;
+}
+
+.hero .box .main-text {
+	font-size: 48px;
+}
+
+.hero img{
+	width: 500px;
+}
