@@ -12,11 +12,6 @@ body {
 	text-decoration: none;
 }
 
-h1 {
-	border: 2px solid black;
-	
-}
-
 .warning {
 	border: 5px solid red;
 	padding: 2px;
@@ -76,7 +71,8 @@ img {
 .hero .header-logo {
 	size: 24px;
 	flex-grow: 1;
-	flex-direction: row;
+	flex-direction: column;
+	margin-left: 50px;
 }
 
 .hero button{
@@ -86,7 +82,7 @@ img {
 }
 
 .hero .box {
-	display: flex;
+	display: block;
 	flex: 1 1 auto;
 	padding: 50px;
 }
@@ -99,6 +95,63 @@ img {
 	font-size: 48px;
 }
 
+.hero .box button {
+	font-size: 18px;
+	padding: 8px;
+	background-color: #3882F6;
+	border-style: dashed;
+	
+}
+
 .hero img{
 	width: 500px;
+}
+
+/* about file */
+
+.infobox {
+	display: flex;
+	flex: 1 1 auto;
+	gap: 50px;
+	width: 500px;
+	margin: 50px;
+	border-radius: 7px;
+	
+	border: 2px lightblue dashed; 
+	align-items: center;
+	justify-content: center;
+}
+
+.title {
+	font-size: 36px;;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 900;
+	margin: 20px;
+}
+
+.imgdisplay {
+	display: flex;
+	flex-direction: row;
+	flex: 1 1 auto;
+}
+
+.imgdisplay .imgbox {
+	display: flex;
+	flex: 1 1 auto;
+	flex-grow: 1;
+	gap: 50px;
+	flex-basis: 20px;
+	height: 70px;
+	margin: 25px
+}
+
+.imgdisplay .imgbox img{
+	display: flex;
+	flex: 1 1 auto;
+	flex-grow: 1;
+	width: 50px;
+	height: 50px;
+	align-items: center;
 }

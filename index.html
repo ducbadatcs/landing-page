@@ -2,37 +2,39 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>My First Webpage</title>
+		<title>Đức's Website</title>
 		<link rel="stylesheet" href="./styles.css">
 	</head>
 
 	<body>
 		<!-- This is actually a comment -->
 		<div class="hero">
-			<span class="header-logo" style="font-size: 24px;">Đức's website</span>
+			<a class="header-logo" style="font-size: 24px;" href="./index.html">Đức's website</a>
 			<button><a href="pages/about.html">visit my about page</a></button>
 			<button><a href="pages/articles.html">read my articles</a></button>
-			<button><a href="pages/projects.html">my other projects</a></button>
+			<button><a href="pages/projects.html">see my other projects</a></button>
 		</div>
 		<div class="hero">
 			<div class="box">
 				<h1 class="main-text">Welcome to Hoàng Minh Đức's site</h1>
-				<p></p>			
+				<p>
+					Hi! I am a Vietnamese student in Douglas College, Canada.<br>
+					My hobbies are writing, photography and many other things.<br>
+					To learn more about me, check out my about page.
+				</p>
+				<button style="border-radius: 10px;"><a href="pages/about.html">About me</a></button>		
 			</div>
-			<div class="box"><img src="images/akrivec_slovenia.jpg"></div>
+			<div class="box">
+				<img src="images/kittens-cats-foster-playing-160755.jpeg" alt="kittens">
+				<p><em>I really love kittens!</em></p>
+			</div>
 		</div>
-		<p class="blue-box">
-			My first blog in html! I always wanted to have one to share my thoughts<br>
-			So here you go!
-		</p>
-		<p class="instruction">
-			Welcome! Please visit the about page.
-		</p>
-		<h2>articles</h2>
-
-		
-		<h3>coding</h3>
-		<a href="./pages/kattis_triangle.html">the Kattis triangle problem (in Vietnamese)</a><br><br>
-		<a href="./pages/nucleotide.html">Kattis generalized nucleotide problem (in Vietnamese)</a>
+		<span class="title">A few of my projects</span>
+		<div class="imgdisplay">
+			<div class="imgbox"><img src="https://images.pexels.com/photos/952594/pexels-photo-952594.jpeg?auto=compress&cs=tinysrgb&w=600"></div>
+			<div class="imgbox"></div>
+			<div class="imgbox"></div>
+			<div class="imgbox"></div>
+		</div>
 	</body>
 </html>
