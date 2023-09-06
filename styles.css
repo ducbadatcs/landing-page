@@ -127,7 +127,7 @@ img {
 }
 
 .imgdisplay .imgbox {
-	display: block;
+	display: flex;
 	flex: 1 1 auto;
 	flex-grow: 1;
 	gap: 50px;
@@ -141,11 +141,24 @@ img {
 	display: flex;
 	flex: 1 1 auto;
 	flex-grow: 1;
-	width: fit-content;
-	height: fit-content;
+	width: 200px; 
+	height: 200px;
+	/* width: fit-content;
+	height: fit-content; */
 	align-items: center;
 	border: 5px solid #3882F6;
 	border-radius: 100px;
+}
+
+/* Quote */
+
+.quote {
+	background-color: #E5E7EB;
+	font-size: 36px;
+	font-style: italic;
+	font-weight: 300;
+	text-align: center;
+	
 }
 
 /* about file */
