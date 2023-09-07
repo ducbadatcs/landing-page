@@ -127,7 +127,7 @@ img {
 }
 
 .imgdisplay .imgbox {
-	display: flex;
+	display: block;
 	flex: 1 1 auto;
 	flex-grow: 1;
 	gap: 50px;
@@ -138,7 +138,7 @@ img {
 }
 
 .imgdisplay .imgbox img{
-	display: flex;
+	display: block;
 	flex: 1 1 auto;
 	flex-grow: 1;
 	width: 200px; 
@@ -147,8 +147,14 @@ img {
 	height: fit-content; */
 	align-items: center;
 	border: 5px solid #3882F6;
-	border-radius: 100px;
+	border-radius: 10px;
 }
+
+.imgdisplay .imgbox a {
+	margin: auto;
+	
+}
+
 
 /* Quote */
 
