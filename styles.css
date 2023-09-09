@@ -173,8 +173,8 @@ img {
 	display: flex;
 	flex: 1 1 auto;
 	flex-direction: column;
-	gap: 50px;
-	width: 50%;
+	gap: 2px;
+	width: 1000px;
 	margin: auto;
 	margin-top: 50px;
 	margin-bottom: 50px;
@@ -184,5 +184,10 @@ img {
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+}
+
+.infobox p {
+	margin: 10px;
+	
 }
 
