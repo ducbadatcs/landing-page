@@ -1,0 +1,21 @@
+.infobox {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	gap: 2px;
+	width: 1000px;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border-radius: 7px;
+	
+	border: 2px lightblue dashed; 
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.infobox p {
+	margin: 10px;
+	
+}

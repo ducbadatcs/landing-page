@@ -168,29 +168,6 @@ img {
 	
 }
 
-/* about file */
-
-.infobox {
-	display: flex;
-	flex: 1 1 auto;
-	flex-direction: column;
-	gap: 2px;
-	width: 1000px;
-	margin: auto;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	border-radius: 7px;
-	
-	border: 2px lightblue dashed; 
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-}
-
-.infobox p {
-	margin: 10px;
-	
-}
 
 /* sign up */
 
@@ -201,6 +178,7 @@ img {
 	background-color: #3882F6;
 	width: 50%;
 	margin: auto;
+	margin-bottom: 20px;
 	border: 2px solid #3882F6;
 	border-radius: 5px;
 	color: white
