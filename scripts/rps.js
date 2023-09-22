@@ -5,20 +5,6 @@ function get_computer_choice() {
 
 player_input = "";
 
-function player_rock() {
-    player_input = "rock";
-    alert("rock");
-}
-
-function player_paper() {
-    player_input = "paper";
-    alert("paper");
-}
-
-function player_scissors() {
-    player_input = "scissors";
-    alert("scissors");
-}
 
 // player_input = "rock";
 function game(pl) {
@@ -27,19 +13,19 @@ function game(pl) {
     if (pl != computer_input) {
         switch (pl) {
             case "rock":
-                winner = computer_input == "paper" ? "Computer" : "You";
+                winner = (computer_input == "paper") ? "Computer" : "You";
                 break;
             case "paper":
-                winner = computer_input == "scissors" ? "Computer" : "You";
+                winner = (computer_input == "scissors") ? "Computer" : "You";
                 break;
             case "scissors":
-                winner = computer_input == "rock" ? "Computer" : "You";
+                winner = (computer_input == "rock") ? "Computer" : "You";
                 break;
         }
     }
     if (pl === computer_input) {
         winner = "Tie!";
-    } else if (winner == "you") {
+    } else if (winner == "You") {
         winner =  "You win!";
     } else {
         winner = "Computer wins!"
