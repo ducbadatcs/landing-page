@@ -13,28 +13,21 @@ for (i of ["rock", "paper", "scissors"]){
 
 // player_input = "rock";
 function game(pl) {
-    var computer_input = get_computer_choice();
-    var winner = "";
-    if (pl != computer_input) {
-        if (pl == "rock" && computer_input == "paper") winner = "Computer wins!";
-        if (pl == "rock" && computer_input == "scissors") winner = "You win!";
-        if (pl == "rock" && computer_input == "rock") winner = "Tie";
+    let computer_input = get_computer_choice();
+    let winner = "";
+    
+    if (pl == "rock" && computer_input == "paper") winner = "Computer wins!";
+    if (pl == "rock" && computer_input == "scissors") winner = "You win!";
+    if (pl == "rock" && computer_input == "rock") winner = "Tie";
 
-        if (pl == "paper" && computer_input == "paper") winner = "Tie!";
-        if (pl == "paper" && computer_input == "scissors") winner = "Computer wins!";
-        if (pl == "paper" && computer_input == "rock") winner = "You win!";
+    if (pl == "paper" && computer_input == "paper") winner = "Tie!";
+    if (pl == "paper" && computer_input == "scissors") winner = "Computer wins!";
+    if (pl == "paper" && computer_input == "rock") winner = "You win!";
 
-        if (pl == "scissors" && computer_input == "paper") winner = "You win!";
-        if (pl == "scissors" && computer_input == "scissors") winner = "Tie!";
-        if (pl == "scissors" && computer_input == "rock") winner = "Computer wins!";
-    }
-    if (pl === computer_input) {
-        winner = "Tie!";
-    } else if (winner == "You") {
-        winner =  "You win!";
-    } else {
-        winner = "Computer wins!"
-    }
+    if (pl == "scissors" && computer_input == "paper") winner = "You win!";
+    if (pl == "scissors" && computer_input == "scissors") winner = "Tie!";
+    if (pl == "scissors" && computer_input == "rock") winner = "Computer wins!";
+    
     
     document.getElementById("result").innerHTML = "";
     document.getElementById("result").innerHTML += "<h2>You chose: " + pl + "</h2>";
