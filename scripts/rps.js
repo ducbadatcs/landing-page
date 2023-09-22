@@ -18,7 +18,7 @@ function game(pl) {
     
     if (pl == "rock" && computer_input == "paper") winner = "Computer wins!";
     if (pl == "rock" && computer_input == "scissors") winner = "You win!";
-    if (pl == "rock" && computer_input == "rock") winner = "Tie";
+    if (pl == "rock" && computer_input == "rock") winner = "Tie!";
 
     if (pl == "paper" && computer_input == "paper") winner = "Tie!";
     if (pl == "paper" && computer_input == "scissors") winner = "Computer wins!";
