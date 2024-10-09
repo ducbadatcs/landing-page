@@ -1,0 +1,75 @@
+body {
+    background-image: url('backgrond3.png');
+    background-size: cover;
+}
+img {
+    text-align: left;
+    text-size-adjust: 5%;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    background-color: rgb(56, 56, 119);
+    background-size: cover;
+    list-style: none;
+    float: right;
+    font-size: 96%;
+}
+nav ul li a {
+    display: block;
+    font-weight: bold;
+    padding: .625em 3.5em;
+    font-family: 'Afacad Flux';
+    color: rgb(255, 255, 255);
+    border-right: 1px black;
+}
+main {
+    text-align: left;
+    width: 57%;
+    background-size: cover;
+    background-color: rgba(71, 71, 148, 0.539);;
+    height: fit-content;
+    padding: 0.5em 0.5em
+}
+main h1 {
+    font-family: 'Afacad Flux', Arial;
+    font-size: 7em;
+    color:antiquewhite;
+}
+main h2 {
+    font-family: 'Source Code Pro', Arial;
+    font-size: 2em;
+    color: rgb(224, 222, 222);
+    font-weight: bolder;
+}
+main p {
+    font-family: 'Source Code Pro', Arial;
+    color: rgb(224, 222, 222);
+    font-size: 1.2em;
+}
+/* How to make the apply button in the middle??? */
+.apply {
+    background-color: rgb(77, 77, 162);
+    text-decoration: none;
+    font-size: 1.3em;
+    font-family: 'Afacad Flux', Arial;
+    color:antiquewhite;
+    display: block;
+    width:fit-content;
+    height: fit-content;
+    font-weight: bold;
+    padding: .625em 3.5em;
+    border-radius: 10px 
+}
+aside {
+    background-image: url('background2.png');
+}
+footer {
+    font-family: 'Afacad Flux', Arial;
+    padding: .625em 3.5em;
+    background-color: rgb(56, 56, 119);
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
